@@ -6,7 +6,9 @@ author   'Toby Corkindale <tjc@cpan.org>';
 license  'perl';
 
 requires 'Catalyst::Exception';
-requires 'parent';
+requires 'Moose';
+requires 'namespace::autoclean';
+requires 'MooseX::Types::Common';
 requires 'Auth::Yubikey_WebClient' => '2.00';
 
 build_requires 'Test::More';

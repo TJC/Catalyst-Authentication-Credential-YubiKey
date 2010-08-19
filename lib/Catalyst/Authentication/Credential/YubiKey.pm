@@ -1,9 +1,9 @@
 package Catalyst::Authentication::Credential::YubiKey;
-use strict;
-use warnings;
 use Catalyst::Exception;
 use Auth::Yubikey_WebClient;
-use parent qw(Class::Accessor::Fast);
+use Moose;
+use MooseX::Types::Common::String qw/ NonEmptySimpleStr /;
+use namespace::autoclean;
 
 =head1 NAME
 
@@ -62,32 +62,23 @@ have open-sourced theirs, and some people may be using such.)
 
 our $VERSION = '0.02';
 
-__PACKAGE__->mk_accessors(qw(api_id api_key realm id_for_store));
+has [qw/ api_key api_id /] => ( isa => NonEmptySimpleStr, is => 'ro', required => 1 );
+has id_for_store => ( isa => NonEmptySimpleStr, is => 'ro', default => 'id' );
 
-=head2 new
+=head2 BUILDARGS
 
-Standard constructor following the Catalyst::Authentication::Credential
-model.
+Extracts the config
 
 =cut
 
-sub new {
+sub BUILDARGS {
     my ($class, $config, $app, $realm) = @_;
-    my $self = {};
-    bless $self, $class;
-
-    $self->api_id($config->{api_id});
-    $self->api_key($config->{api_key});
-    # $self->realm($realm);
-    $self->id_for_store($config->{id_for_store} || 'id');
-
-    unless ($self->api_id and $self->api_key) {
+    unless ($config->{api_id} and $config->{api_key}) {
         Catalyst::Exception->throw(
-            __PACKAGE__ . " missing api_id and api_key"
+            __PACKAGE__ . " credential for realm " . $realm->name . " missing api_id and api_key"
         );
     }
-
-    return $self;
+    return $config;
 }
 
 =head2 authenticate
