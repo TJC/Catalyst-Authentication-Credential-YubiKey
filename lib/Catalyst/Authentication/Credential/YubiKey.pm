@@ -39,6 +39,7 @@ Uses the Catalyst::Plugin::Authentication system.
 
           # This is the column in your store that contains the yubikey ID,
           # for mapping that ID to username or whatever.
+          # It defaults to 'id' if not specified.
           id_for_store => 'id',
         },
         ...
@@ -59,7 +60,14 @@ have open-sourced theirs, and some people may be using such.)
 
 our $VERSION = '0.02';
 
-__PACKAGE__->mk_accessors(qw(api_id api_key realm));
+__PACKAGE__->mk_accessors(qw(api_id api_key realm id_for_store));
+
+=head2 new
+
+Standard constructor following the Catalyst::Authentication::Credential
+model.
+
+=cut
 
 sub new {
     my ($class, $config, $app, $realm) = @_;
@@ -69,6 +77,7 @@ sub new {
     $self->api_id($config->{api_id});
     $self->api_key($config->{api_key});
     # $self->realm($realm);
+    $self->id_for_store($config->{id_for_store} || 'id');
 
     unless ($self->api_id and $self->api_key) {
         Catalyst::Exception->throw(
@@ -93,7 +102,7 @@ sub authenticate {
 
     # The user ID seems to be the first 12 characters..
     my $yubi_id = substr($otp, 0, 12);
-    my $user = $realm->find_user({ id => $yubi_id });
+    my $user = $realm->find_user({ $self->id_for_store => $yubi_id });
     unless ($user) {
         $c->log->error("Authenticated user, but could not locate in "
             ." our Store!");
