@@ -1,3 +1,4 @@
+inc/*
 blib*
 Makefile
 Makefile.old
@@ -8,3 +9,4 @@ pm_to_blib*
 .lwpcookies
 Catalyst-Authentication-Credential-YubiKey-*
 cover_db
+META.yml
