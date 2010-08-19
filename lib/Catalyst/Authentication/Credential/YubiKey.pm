@@ -56,6 +56,8 @@ improved to return more of the details, rather than just 'OK'.
 Also would be good to support in-house authentication servers. (Since Yubico
 have open-sourced theirs, and some people may be using such.)
 
+=head1 METHODS
+
 =cut
 
 our $VERSION = '0.02';
@@ -87,6 +89,12 @@ sub new {
 
     return $self;
 }
+
+=head2 authenticate
+
+Standard authentication method, as per Cat-Auth-Credential standard.
+
+=cut
 
 sub authenticate {
     my ($self, $c, $realm, $authinfo) = @_;
