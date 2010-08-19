@@ -7,9 +7,13 @@ license  'perl';
 
 requires 'Catalyst::Exception';
 requires 'parent';
-requires 'Auth::Yubikey_WebClient' => 2.00;
+requires 'Auth::Yubikey_WebClient' => '2.00';
 
 build_requires 'Test::More';
+
+homepage 'http://github.com/TJC/Catalyst-Authentication-Credential-YubiKey';
+resources 'repository' =>
+    'git://github.com/TJC/Catalyst-Authentication-Credential-YubiKey.git';
 
 auto_install;
 

@@ -7,7 +7,7 @@ use parent qw(Class::Accessor::Fast);
 
 =head1 NAME
 
-Catalyst::Authentication::Credential::YubiKey
+Catalyst::Authentication::Credential::YubiKey - YubiKey authentication
 
 =head1 VERSION
 
