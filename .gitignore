@@ -10,3 +10,4 @@ pm_to_blib*
 Catalyst-Authentication-Credential-YubiKey-*
 cover_db
 META.yml
+.*.swp

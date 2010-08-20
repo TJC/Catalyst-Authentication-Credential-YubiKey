@@ -8,3 +8,4 @@ pm_to_blib*
 .lwpcookies
 Catalyst-Authentication-Credential-YubiKey-*
 cover_db
+.*.swp
