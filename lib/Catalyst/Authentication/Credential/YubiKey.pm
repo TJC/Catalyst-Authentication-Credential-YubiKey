@@ -60,10 +60,19 @@ have open-sourced theirs, and some people may be using such.)
 
 =cut
 
-our $VERSION = '0.02';
+our $VERSION = '0.03';
 
-has [qw/ api_key api_id /] => ( isa => NonEmptySimpleStr, is => 'ro', required => 1 );
-has id_for_store => ( isa => NonEmptySimpleStr, is => 'ro', default => 'id' );
+has [qw/ api_key api_id /] => (
+    isa => NonEmptySimpleStr,
+    is => 'ro',
+    required => 1
+);
+
+has id_for_store => (
+    isa => NonEmptySimpleStr,
+    is => 'ro',
+    default => 'id'
+);
 
 =head2 BUILDARGS
 
@@ -161,4 +170,5 @@ under the same terms as Perl itself.
 
 =cut
 
+__PACKAGE__->meta->make_immutable;
 1;
