@@ -60,7 +60,7 @@ have open-sourced theirs, and some people may be using such.)
 
 =cut
 
-our $VERSION = '0.03';
+our $VERSION = '0.04';
 
 has [qw/ api_key api_id /] => (
     isa => NonEmptySimpleStr,
