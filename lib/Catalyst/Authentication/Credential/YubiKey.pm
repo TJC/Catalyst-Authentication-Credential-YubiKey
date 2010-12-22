@@ -108,9 +108,9 @@ sub authenticate {
         return;
     }
 
-    # The user ID seems to be the first 12 characters..
+    # The user ID is the first 12 characters..
     my $yubi_id = substr($otp, 0, 12);
-    my $user = $realm->find_user({ $self->id_for_store => $yubi_id });
+    my $user = $realm->find_user({ $self->id_for_store => $yubi_id }, $c);
     unless ($user) {
         $c->log->error("Authenticated user, but could not locate in "
             ." our Store!");
