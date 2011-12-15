@@ -11,7 +11,7 @@ Catalyst::Authentication::Credential::YubiKey - YubiKey authentication
 
 =head1 VERSION
 
-Version 0.05
+Version 0.06
 
 =head1 SYNOPSIS
 
@@ -60,7 +60,7 @@ have open-sourced theirs, and some people may be using such.)
 
 =cut
 
-our $VERSION = '0.05';
+our $VERSION = '0.06';
 
 has [qw/ api_key api_id /] => (
     isa => NonEmptySimpleStr,
