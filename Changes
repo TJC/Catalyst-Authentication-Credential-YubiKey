@@ -1,5 +1,8 @@
 Revision history for Catalyst-Authentication-Credential-YubiKey
 
+0.07   Mon Oct 22 14:35:00 2012
+    * Update Module::Install to 0.06 to avoid 5.16 compat issues
+
 0.06   Thu Dec 15 16:00:29 2011
     * RT:73257 Yubi ID may be less than 12 characters.
     * RT:73261 - Provide direct link to API generation page.

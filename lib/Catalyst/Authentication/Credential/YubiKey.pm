@@ -11,7 +11,7 @@ Catalyst::Authentication::Credential::YubiKey - YubiKey authentication
 
 =head1 VERSION
 
-Version 0.06
+Version 0.07
 
 =head1 SYNOPSIS
 
@@ -60,7 +60,7 @@ have open-sourced theirs, and some people may be using such.)
 
 =cut
 
-our $VERSION = '0.06';
+our $VERSION = '0.07';
 
 has [qw/ api_key api_id /] => (
     isa => NonEmptySimpleStr,
@@ -164,7 +164,7 @@ L<http://search.cpan.org/dist/Catalyst-Authentication-Credential-YubiKey/>
 
 =head1 COPYRIGHT & LICENSE
 
-Copyright 2010 Toby Corkindale, all rights reserved.
+Copyright 2010-2012 Toby Corkindale, all rights reserved.
 
 This program is free software; you can redistribute it and/or modify it
 under the same terms as Perl itself.
